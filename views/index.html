@@ -1,10 +1,12 @@
 <!DOCTYPE html>
-<html manifest="/manifest.appcache">
+<html>
 <head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>
-    {{ settings.title }} - Look, listen and write.
+    {{ settings.title }}
 </title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="/css/index.css" rel="stylesheet">
 <script data-source="express">
     settings = {{& settings.json }}
@@ -12,223 +14,48 @@
 </head>
 
 <body>
-<header class="container">
-    <nav class="navbar navbar-fixed-top" style="display: none;">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="/">{{ settings.title }}</a>
-        <div class="nav-collapse collapse navbar-responsive-collapse">
-            <nav class="nav navbar-nav">
-                <li class="active">
-                    <a class="glyphicon glyphicon-film" href="/videos"> 视频 </a>
-                </li>
-                <li>
-                    <a class="glyphicon glyphicon-leaf" href="/videos/fresh"> 新鲜 </a>
-                </li>
-                <li>
-                    <a class="glyphicon glyphicon-fire" href="/videos/popular"> 热门 </a>
-                </li>
-                <li>
-                    <a class="glyphicon glyphicon-map-marker" href="/about"> 关于 </a>
-                </li>
-            </nav>
-            <form class="navbar-form col-lg-4">
-                <input type="search" class="input-small" placeholder="搜索">
-            </form>
-            <ul class="user nav navbar-nav pull-right">
-                <li class="login">
-                    <a class="glyphicon glyphicon-dashboard" href="/users/login" data-toggle="modal" data-target=".user.login.modal"> 登录 </a>
-                </li>
-                <li class="user dropdown">
-                    <a class="dropdown-toggle glyphicon glyphicon-user" href="#" data-toggle="dropdown">
-                         <strong>用户</strong> <b class="caret"></b>
-                    </a>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a class="glyphicon glyphicon-facetime-video" tabindex="-1" href="/videos/post"  data-toggle="modal" data-target=".video.post.modal"> 投稿 </a>
-                        </li>
-                        <li>
-                            <a class="glyphicon glyphicon-wrench" tabindex="-1" href="/users/profile" data-toggle="modal" data-target=".users.profile.modal"> 个人资料 </a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a class="glyphicon glyphicon-off" tabindex="-1" href="/users/logout"> 退出 </a>
-                        </li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
-    </nav>
-</header>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <header class="container">
+        <p class="navbar-text">Vitarn CVS</p>
+    </header>
+</nav>
 
 <section class="container">
-    <div class="videos row">
+    <div class="row"><br></div>
+    <div class="row">
+        <div class="col-md-12">
+            <form class="form-horizontal col-md-offset-4 col-md-4" role="form">
+                <fieldset>
+                    <legend>请登录</legend>
+                    <div class="form-group">
+                        <select class="form-control">
+                            <option>管理员</option>
+                            <option>冷血儿</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-control" placeholder="密码" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="checkbox">
+                            <input type="checkbox" value="remember-me"> 记住我
+                        </label>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
     </div>
 </section>
 
-<footer class="container">
-    <!--<p>© Vitarn 2013</p>-->
-</footer>
+<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+    <footer class="container">
+        <p class="navbar-text navbar-right">© Vitarn 2013.</p>
+    </footer>
+</nav>
 
-<div class="user login modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <ul class="nav nav-pills">
-                    <li class="active">
-                        <a href="#" data-toggle="pill" data-target=".user.login.tab-pane"> 登录 </a>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="pill" data-target=".user.register.tab-pane"> 新用户注册 </a>
-                    </li>
-                    <li>
-                        <a href="#" data-toggle="pill" data-target=".user.recover.tab-pane"> 忘记密码 </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="tab-content">
-                <div class="user login tab-pane active">
-                    <div class="modal-body">
-                        <form id="userLoginForm" class="form-horizontal">
-                            <div class="row">
-                                <label class="control-label col-lg-2">用户名</label>
-                                <div class="col-lg-9">
-                                    <input class="input-with-feedback" type="text" name="name" placeholder="中文/英文/数字" required pattern="{{ settings.User.nameRegex.source }}">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label class="control-label col-lg-2">密码</label>
-                                <div class="col-lg-9">
-                                    <input class="input-with-feedback" type="password" name="password" placeholder="###" required>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <input class="btn btn-primary" type="submit" form="userLoginForm" value=" 登录 " disabled>
-                    </div>
-                </div>
-                <div class="user register tab-pane">
-                    <div class="modal-body">
-                        <form id="userRegisterForm" class="user register form-horizontal">
-                            <div class="row">
-                                <label class="control-label col-lg-2">用户名</label>
-                                <div class="col-lg-9">
-                                    <input class="input-with-feedback" type="text" name="name" placeholder="中文/英文/数字" required pattern="{{ settings.User.nameRegex.source }}">
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label class="control-label col-lg-2">Email</label>
-                                <div class="col-lg-9">
-                                    <input class="input-with-feedback" type="email" name="email" placeholder="示例: lulu@vitarn.com" required>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <label class="control-label col-lg-2">密码</label>
-                                <div class="col-lg-9">
-                                    <input class="input-with-feedback" type="password" name="password" placeholder="###" required>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="submit" class="btn btn-primary" form="userRegisterForm" value=" 注册新用户 " disabled>
-                    </div>
-                </div>
-                <div class="user recover tab-pane">
-                    <div class="modal-body">
-                        <form id="userRecoverForm" class="user recover form-horizontal">
-                            <div class="row">
-                                <label class="control-label col-lg-2">用户名</label>
-                                <div class="col-lg-9">
-                                    <input class="input-with-feedback" type="text" name="name" placeholder="中文/英文/数字" required pattern="{{ settings.User.nameRegex.source }}">
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="submit" class="btn btn-primary" form="userRecoverForm" value=" 发送密码到邮箱 " disabled>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="video post modal">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h3>视频投稿</h3>
-            </div>
-            <div class="modal-body">
-                <form id="videoPostForm" class="video post">
-                    <div class="input-group">
-                        <span class="input-group-addon glyphicon glyphicon-facetime-video"></span>
-                        <input class="input-large" type="url" placeholder="视频地址" required pattern="{{ settings.Video.urlRegex.source }}">
-                        <span class="valid input-group-addon text-success glyphicon glyphicon-ok"></span>
-                    </div>
-                    <span class="url help-block">
-                        <dl>
-                            <dt>目前支持的<abbr title="视频来源于其他网站, 本站不提供视频上传服务.">视频</abbr>地址格式:</dt>
-                            <dd>
-                                <dl class="dl-horizontal">
-                                    <dt>新浪视频</dt>
-                                    <dd>
-                                        <a href="http://video.sina.com.cn/v/b/106391866-1139810150.html" title="A Twist of Fate" target="_blank" data-toggle="tooltip">
-                                            http://video.sina.com.cn/v/b/***-***.html
-                                        </a>
-                                    </dd>
-                                    <dt>优酷网</dt>
-                                    <dd>
-                                        <a href="http://v.youku.com/v_show/id_XNTIwODI1NTMy.html" title="裸のKiss" target="_blank" data-toggle="tooltip">
-                                            http://v.youku.com/v_show/id_*****.html
-                                        </a>
-                                    </dd>
-                                </dl>
-                            </dd>
-                        </dl>
-                    </span>
-                    <div class="alert glyphicon glyphicon-exclamation-sign">
-                        <strong>重复投稿!</strong> 感谢您的热心投递, 不过这部视频之前已经有人投递过了.
-                    </div>
-                    <div class="video meta media">
-                        <img class="media-object img-rounded pull-right">
-                        <div class="media-body">
-                            <div class="input-group">
-                                <span class="input-group-addon glyphicon glyphicon-flag"></span>
-                                <input type="text" name="title" placeholder="标题" required>
-                            </div>
-                            <div class="input-group">
-                                <span class="input-group-addon glyphicon glyphicon-tag"></span>
-                                <input type="text" name="tags" placeholder="标签, 使用空格隔开多个标签. 例如: 游戏 音乐" required>
-                            </div>
-                        </div>
-                        <div class="input-group">
-                            <span class="input-group-addon glyphicon glyphicon-comment"></span>
-                            <textarea name="intro" rows="10" placeholder="描述一下视频内容吧." required></textarea>
-                        </div>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <input type="submit" class="btn btn-primary" form="videoPostForm" value="提交" data-loading-text="正在提交...">
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="/js/modernizr.min.js"></script>
-<script src="/js/jquery-2.0.3.min.js"></script>
-<script src="/js/imagesloaded.pkgd.min.js"></script>
-<script src="/js/masonry.pkgd.min.js"></script>
-<script src="/js/bootstrap-3.0.0.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
+<script src="/js/jquery-2.1.1.js"></script>
+<script src="/js/bootstrap-3.1.1.js"></script>
 <script src="/js/index.js"></script>
 <!-- <script src="http://localhost:35729/livereload.js"></script> -->
 </body>

@@ -1,0 +1,56 @@
+/* Bullet fall style mixins */
+
+.transition-property(@transition-property) {
+    -webkit-transition-property: @transition-property;
+       -moz-transition-property: @transition-property;
+         -o-transition-property: @transition-property;
+            transition-property: @transition-property;
+}
+
+// Prevent webkit transition animations flicker.
+.backface-visibility(@backface-visibility) {
+    -webkit-backface-visibility: @backface-visibility;
+       -moz-backface-visibility: @backface-visibility;
+        -ms-backface-visibility: @backface-visibility;
+            backface-visibility: @backface-visibility;
+}
+
+.cursor(@cursor) {
+    cursor: "-webkit-@{cursor}";
+    cursor: "-moz-@{cursor}";
+    cursor: @cursor;
+}
+
+.animation(@animation) {
+    -webkit-animation: @animation;
+       -moz-animation: @animation;
+         -o-animation: @animation;
+            animation: @animation;
+}
+
+.animation-play-state(@animation-play-state) {
+    -webkit-animation-play-state: @animation-play-state;
+       -moz-animation-play-state: @animation-play-state;
+         -o-animation-play-state: @animation-play-state;
+            animation-play-state: @animation-play-state;
+}
+
+
+.keyframes-left(@from, @to) {
+    @-webkit-keyframes left {
+        from { left: @from; }
+        to { left: @to; }
+    }
+    @-moz-keyframes left {
+        from { left: @from; }
+        to { left: @to; }
+    }
+    @-o-keyframes left {
+        from { left: @from; }
+        to { left: @to; }
+    }
+    @keyframes left {
+        from { left: @from; }
+        to { left: @to; }
+    }
+}

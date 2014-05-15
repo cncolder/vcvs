@@ -38,7 +38,7 @@ module.exports = @
     #         maxAge: 30 * 24 * 60 * 60 * 1000
     
     app.set 'env', env
-    app.set 'title', 'ViTarn'
+    app.set 'title', 'ViTarn CVS'
     app.set 'views', "#{cwd}/views"
     app.engine 'html', consolidate.hogan
     app.set 'view engine', 'html'

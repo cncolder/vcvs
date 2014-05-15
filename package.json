@@ -28,6 +28,7 @@
         "key": "",
         "moment": "",
         "mongoose": "",
+        "morgan": "",
         "connect-no-www": "",
         "request": "",
         "underscore": ""

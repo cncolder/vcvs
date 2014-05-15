@@ -1,0 +1,14 @@
+{
+    "development":
+    {
+        "url": "mongodb://localhost/cvs_dev"
+    },
+    "test":
+    {
+        "url": "mongodb://localhost/cvs_test"
+    },
+    "production":
+    {
+        "url": "mongodb://localhost/cvs"
+    }
+}

@@ -1,0 +1,51 @@
+{
+    "name": "cvs",
+    "version": "0.0.1",
+    "private": true,
+    "description": "A convenience store system",
+    "main": "app.coffee",
+    "scripts": {
+        "start": "coffee server.coffee",
+        "test": "mocha --recursive"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/cncolder/cvs.git"
+    },
+    "keywords": [
+        "Convenience Store"
+    ],
+    "author": "Colder",
+    "license": "MIT",
+    "dependencies": {
+        "async": "",
+        "backbone": "",
+        "coffee-script": "",
+        "connect-mongo": "",
+        "consolidate": "",
+        "express": "",
+        "hogan.js": "",
+        "key": "",
+        "moment": "",
+        "mongoose": "",
+        "connect-no-www": "",
+        "request": "",
+        "underscore": ""
+    },
+    "devDependencies": {
+        "coffeeify": "",
+        "colors": "",
+        "grunt": "",
+        "grunt-browserify": "",
+        "grunt-cli": "",
+        "grunt-contrib-coffee": "",
+        "grunt-contrib-concat": "",
+        "grunt-contrib-jshint": "",
+        "grunt-contrib-less": "",
+        "grunt-contrib-uglify": "",
+        "grunt-contrib-watch": "",
+        "mocha": ""
+    },
+    "readme": "cvs",
+    "readmeFilename": "README.md"
+}
